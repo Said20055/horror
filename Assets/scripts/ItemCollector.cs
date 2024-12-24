@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class ItemCollector : MonoBehaviour
 {
@@ -45,7 +46,10 @@ public class ItemCollector : MonoBehaviour
     }
     private void UpdateItemCountText()
     {
+        if(YandexGame.EnvironmentData.language.Equals("ru"))
         ark.text = "Собрано предметов: " + itemCount +"/10" ; // Обновляем текст с количеством собранных предметов
+        if (YandexGame.EnvironmentData.language.Equals("en"))
+            ark.text = "Items collected: " + itemCount + "/10";
     }
 
    //private void ShowCollectionPanel()

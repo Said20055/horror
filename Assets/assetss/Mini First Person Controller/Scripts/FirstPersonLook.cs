@@ -7,7 +7,7 @@ public class FirstPersonLook : MonoBehaviour
 {
     [SerializeField]
     Transform character;
-    public float sensitivity = 2;
+    private float sensitivity;
     public float smoothing = 1.5f;
     public TouchPanel cameraControllerPanel;
     float mouseX = 0;
@@ -26,9 +26,17 @@ public class FirstPersonLook : MonoBehaviour
 
     void Start()
     {
-        
-        if(GameController.instance.isDesktop) Cursor.lockState = CursorLockMode.Locked;
-        else GetComponent<CRTCameraBehaviour>().enabled = false;
+
+        if (GameController.instance.isDesktop)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            sensitivity = 1;
+        }
+        else
+        {
+            GetComponent<CRTCameraBehaviour>().enabled = false;
+            sensitivity = 0.5f;
+        }
     }
 
     void Update()
